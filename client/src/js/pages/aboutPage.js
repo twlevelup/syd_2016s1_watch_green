@@ -2,8 +2,7 @@
 
 var PageView = require('../framework/page');
 
-var AboutScreen = PageView.extend({
-
+var AboutView = PageView.extend({
   id: 'about',
 
   template: require('../../templates/pages/about.hbs'),
@@ -15,4 +14,4 @@ var AboutScreen = PageView.extend({
 
 });
 
-module.exports = new AboutScreen();
+module.exports = new AboutView();

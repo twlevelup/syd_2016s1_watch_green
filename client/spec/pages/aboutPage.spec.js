@@ -1,8 +1,10 @@
 'use strict';
 
 var aboutPage = require('../../src/js/pages/aboutPage'),
-  Router = require('../../src/js/framework/router'),
-  App = require('../../src/js/app');
+
+  Router = require('../../src/js/framework/router.js'),
+  App = require('../../src/js/app'),
+  eventHub = require('../../src/js/framework/eventHub');
 
 window.App = App;
 
@@ -12,7 +14,7 @@ describe('The About Page', function() {
 
     it('should produce the correct HTML', function() {
       aboutPage.render();
-      expect(aboutPage.$el).toContainHtml('Hello, World!');
+      expect(aboutPage.$el).toContainText('About');
     });
 
     it('returns the view object', function() {

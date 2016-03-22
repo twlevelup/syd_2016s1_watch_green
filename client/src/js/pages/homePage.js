@@ -9,10 +9,15 @@ var HomeScreen = PageView.extend({
   template: require('../../templates/pages/home.hbs'),
 
   buttonEvents: {
+    left: 'goToAbout',
     right: 'goToContacts',
     top: 'scrollUp',
     bottom: 'scrollDown',
     left: 'goToAbout'
+  },
+
+  goToAbout: function() {
+    window.App.navigate('about');
   },
 
   goToContacts: function() {
