@@ -20,6 +20,16 @@ describe('The Home Page', function() {
       });
     });
 
+    describe('left', function() {
+
+      it('should take the user to the about page', function() {
+        spyOn(window.App, 'navigate');
+        homePage.setButtonEvents();
+        window.App.vent.trigger('left');
+        expect(window.App.navigate).toHaveBeenCalledWith('about');
+      });
+    });
+
     describe('top', function() {
       it('should scroll the watch face up', function() {
         spyOn(homePage, 'scrollUp');
