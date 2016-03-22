@@ -3,6 +3,7 @@
 var PageView = require('../framework/page');
 
 var AboutView = PageView.extend({
+
   id: 'about',
 
   template: require('../../templates/pages/about.hbs'),

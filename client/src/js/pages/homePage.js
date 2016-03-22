@@ -12,8 +12,7 @@ var HomeScreen = PageView.extend({
     left: 'goToAbout',
     right: 'goToContacts',
     top: 'scrollUp',
-    bottom: 'scrollDown',
-    left: 'goToAbout'
+    bottom: 'scrollDown'
   },
 
   goToAbout: function() {
@@ -22,10 +21,6 @@ var HomeScreen = PageView.extend({
 
   goToContacts: function() {
     window.App.navigate('contacts');
-  },
-
-  goToAbout: function() {
-    window.App.navigate('about');
   },
 
   scrollUp: function() {

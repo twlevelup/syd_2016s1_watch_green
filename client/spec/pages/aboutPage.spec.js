@@ -1,7 +1,6 @@
 'use strict';
 
 var aboutPage = require('../../src/js/pages/aboutPage'),
-
   Router = require('../../src/js/framework/router.js'),
   App = require('../../src/js/app'),
   eventHub = require('../../src/js/framework/eventHub');
@@ -16,6 +15,8 @@ describe('The About Page', function() {
       aboutPage.render();
       expect(aboutPage.$el).toContainText('About');
     });
+
+
 
     it('returns the view object', function() {
       expect(aboutPage.render()).toEqual(aboutPage);
