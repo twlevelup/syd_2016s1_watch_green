@@ -24,13 +24,17 @@ describe('The Medication Page', function() {
       });
     });
 
-
     describe('rendering', function() {
 
         it('should produce the correct HTML', function() {
             medicationPage.render();
             expect(medicationPage.$el).toContainText('Medication');
         });
+
+        // it('should display a list of medication', function() {
+        //     medicationPage.render();
+        //     expect(medicationPage.$el).toContainText()
+        // })
 
         it('returns the view object', function() {
             expect(medicationPage.render()).toEqual(medicationPage);
