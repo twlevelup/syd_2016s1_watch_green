@@ -1,73 +1,73 @@
+/* Tasks:
+ * Need to be able to add/remove from the list/collection of medication without doing it manually
+ */
+
 'use strict';
 
 var PageView = require('../framework/page');
 
-// Should put medication definition in another file, so other pages can also use it
+var AllMedication = [
+    { name: "1th medication", time: "09:00" },
+    { name: "2th medication", time: "12:00" },
+    { name: "3th medication", time: "15:00" },
+    { name: "4th medication", time: "18:00" },
+    { name: "5th medication", time: "21:00" }
+];
 
-// Need better name for this
-// Time specified in 24 hour time as an integer
-function MedicationInstance(time, instructions){
-    this.time = time;
-    this.instructions = instructions;
-}
-
-function Medication(name, times){
+/* Alternate method of defining medication*/
+/*
+function Medication(name, time){
     this.name = name;
-    this.times = times;
+    this.time = time;
 }
 
-var Med1 = new Medication("Acetyl-Cholinesterase inhibitor",
-                          [new MedicationInstance(09, "with food"),
-                          new MedicationInstance(18, "with food")]
-                         );
-
-var Med2 = new Medication("Beta Amyloid Immunoglobulin",
-                          [new MedicationInstance(12, "take two")]);
-
-var Med3 = new Medication("Tau Immunoglobulin",
-                          [new MedicationInstance(18, "with food")]);
-
-var Med4 = new Medication("Formeterolol",
-                          [new MedicationInstance(15, "with water")]);
-
-// var Testing = [
-// {
-//   name : "Name of medication",
-//   time : "09:00"
-// }
-// ];
+var Med1 = new Medication("Acetyl-Cholinesterase inhibitor", "09:00");
+var Med2 = new Medication("Beta Amyloid Immunoglobulin", "12:00");
+var Med3 = new Medication("Tau Immunoglobulin", "15:00");
+var Med4 = new Medication("Acetyl-Cholinesterase inhibitor", "18:00");
 
 var AllMedication = [Med1, Med2, Med3, Med4];
+*/
 
-// var MedicationCollection = Backbone.Collection.extend({model:Medication});
-// var AllMedication = new MedicationCollection();
-// AllMedication.add(Med1);
-// AllMedication.add(Med2);
-// AllMedication.add(Med3);
-// AllMedication.add(Med4);
+var index = 0;
 
 var MedicationView = PageView.extend({
 
-  id: 'medication',
+    id: 'medication',
 
-  template: require('../../templates/pages/medication.hbs'),
-  // template : _.template(require('../../templates/pages/medication.hbs')),
+    template: require('../../templates/pages/medication.hbs'),
 
-  buttonEvents: {
-    left: 'goToHomePage'
-  },
+    buttonEvents: {
+        left: 'goToHomePage',
+        bottom: 'goToBottomPage',
+        top: 'goToTopPage',
+    },
 
-  goToHomePage: function() {
-    window.App.navigate('');
-  },
+    goToHomePage: function() {
+        window.App.navigate('');
+    },
 
-  render: function() {
-    //  var compiled = _.template(this.template);
-    // this.$el.html(this.template(AllMedication));
+    goToTopPage: function() {
+        index -= 1;
+        if (index < 0) {
+            index = AllMedication.length - 1;
+        }
+        this.$el.html(this.template(AllMedication[index]));
+        return this;
+    },
+    goToBottomPage: function() {
+        index += 1;
+        if (index > AllMedication.length - 1) {
+            index = 0;
+        }
+        this.$el.html(this.template(AllMedication[index]));
+        return this;
+    },
 
-    this.$el.html(this.template({medication: AllMedication}));
-    return this;
-  }
+    render: function() {
+        this.$el.html(this.template(AllMedication[index]));
+        return this;
+    }
 
 });
 
