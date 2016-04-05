@@ -28,13 +28,10 @@ describe('The Medication Page', function() {
 
         it('should produce the correct HTML', function() {
             medicationPage.render();
-            // expect(medicationPage.$el).toContainText('Medication');
+            // expect(medicationPage.$el).toContainText('Medication'); //medication name
+            expect(medicationPage.$el).toContainText('img src='); //image
+            // expect(medicationPage.$el).toContainText('Time'); //time taken
         });
-
-        // it('should display a list of medication', function() {
-        //     medicationPage.render();
-        //     expect(medicationPage.$el).toContainText()
-        // })
 
         it('returns the view object', function() {
             expect(medicationPage.render()).toEqual(medicationPage);
