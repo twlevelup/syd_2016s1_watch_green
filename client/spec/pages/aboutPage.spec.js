@@ -16,12 +16,9 @@ describe('The About Page', function() {
       expect(aboutPage.$el).toContainText('About');
     });
 
-
-
     it('returns the view object', function() {
       expect(aboutPage.render()).toEqual(aboutPage);
     });
-
   });
 
 });
