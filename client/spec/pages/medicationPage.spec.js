@@ -28,9 +28,7 @@ describe('The Medication Page', function() {
 
         it('should produce the correct HTML', function() {
             medicationPage.render();
-            // expect(medicationPage.$el).toContainText('Medication'); //medication name
-            expect(medicationPage.$el).toContainText('img src='); //image
-            // expect(medicationPage.$el).toContainText('Time'); //time taken
+            expect(medicationPage.$el).toContainElement('img.takenStatus'); //image element
         });
 
         it('returns the view object', function() {
@@ -42,15 +40,13 @@ describe('The Medication Page', function() {
     describe('formatting time', function() {
 
         it('should return the correctly formatted time', function() {
-            expect(medicationPage.getFormattedTime(0900)).toEqual("9:00 AM");
+            expect(medicationPage.getFormattedTime(900)).toEqual("9:00 AM");
             expect(medicationPage.getFormattedTime(1200)).toEqual("12:00 PM");
             expect(medicationPage.getFormattedTime(1500)).toEqual("3:00 PM");
             expect(medicationPage.getFormattedTime(1634)).toEqual("4:34 PM");
-            expect(medicationPage.getFormattedTime(0000)).toEqual("12:00 AM");
-            expect(medicationPage.getFormattedTime(1334)).toEqual("1:34 AM");
+            expect(medicationPage.getFormattedTime(0)).toEqual("12:00 AM");
+            expect(medicationPage.getFormattedTime(1334)).toEqual("1:34 PM");
         });
 
-    }
-
-
+    });
 });

@@ -97,7 +97,7 @@ var MedicationView = PageView.extend({
             postscript = " PM";
         }
 
-        if(q == 0) {
+        if(q === 0) {
             q = 12;
             postscript = " AM";
         }
