@@ -1,7 +1,8 @@
 .screen{
   padding-left: 1.5em;
   font-family: monospace;
-  color: #FFF;
+  // color: #FFF;
+  color: #000;
 }
 
 #watch-face{
@@ -15,7 +16,7 @@
 }
 
 #watch{
-  background-color: #00F;
+  background-color: #FFF;
   display: inline-block;
   vertical-align: top;
 }
