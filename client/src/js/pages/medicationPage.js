@@ -1,26 +1,113 @@
+/* Tasks:
+ * Need to be able to add/remove from the list/collection of medication without doing it manually
+ */
+
 'use strict';
 
 var PageView = require('../framework/page');
 
+var taken = "../../images/pill_taken.png";
+var not_taken = "../../images/pill_not_taken.png";
+
+var AllMedication = [
+    { name: "Panadol", quantity: "1", time: "0900", instructions: "", takenStatus: taken },
+    { name: "Donepezil", quantity: "2", time: "1200", instructions: "", takenStatus: taken },
+    { name: "Formetorolol", quantity: "4", time: "1330", instructions: "", takenStatus: not_taken },
+    { name: "Prozac", quantity: "25ml", time: "1500", instructions: "", takenStatus: taken },
+    { name: "Ventolin", quantity: "3", time: "1800", instructions: "", takenStatus: not_taken }
+];
+
+var med = AllMedication[0];
+
+/* Alternate method of defining medication*/
+/*
+function Medication(name, time){
+    this.name = name;
+    this.time = time;
+}
+
+var Med1 = new Medication("Acetyl-Cholinesterase inhibitor", "09:00");
+var Med2 = new Medication("Beta Amyloid Immunoglobulin", "12:00");
+var Med3 = new Medication("Tau Immunoglobulin", "15:00");
+var Med4 = new Medication("Acetyl-Cholinesterase inhibitor", "18:00");
+
+var AllMedication = [Med1, Med2, Med3, Med4];
+*/
+
+var index = 0;
+
 var MedicationView = PageView.extend({
 
-  id: 'medication',
+    id: 'medication',
 
-  template: require('../../templates/pages/medication.hbs'),
+    template: require('../../templates/pages/medication.hbs'),
 
-  buttonEvents: {
-    left: 'goToHomePage'
-  },
+    buttonEvents: {
+        left: 'goToHomePage',
+        bottom: 'goToBottomPage',
+        top: 'goToTopPage',
+    },
 
-  goToHomePage: function() {
-    window.App.navigate('');
-  },
+    goToHomePage: function() {
+        window.App.navigate('');
+    },
 
-  render: function() {
-    this.$el.html(this.template());
-    return this;
-  }
+    goToTopPage: function() {
+        index -= 1;
+        if (index < 0) {
+            index = AllMedication.length - 1;
+        }
 
+        med = AllMedication[index];
+        this.render();
+        return this;
+    },
+
+    goToBottomPage: function() {
+        index += 1;
+        if (index > AllMedication.length - 1) {
+            index = 0;
+        }
+
+        med = AllMedication[index];
+        this.render();
+        return this;
+    },
+
+    render: function() {
+        med.formattedTime = this.getFormattedTime(med.time);
+        this.$el.html(this.template(med));
+        return this;
+    },
+
+    getFormattedTime: function(time) {
+        var r = time % 100;
+        var quantity = time - r;
+        if(r < 10) {
+            r = "0" + r;
+        }
+
+        var q = quantity / 100;
+        if(quantity >= 1300) {
+            q = (quantity - 1200) / 100;
+        }
+
+        var postscript = " AM";
+        if(time >= 1200 && time <= 2359) {
+            postscript = " PM";
+        }
+
+        if(q === 0) {
+            q = 12;
+            postscript = " AM";
+        }
+
+        return q + ":" + r + postscript;
+    },
+
+    showNextMedicine : function(index) {
+
+    }
 });
 
 module.exports = new MedicationView();
