@@ -39,4 +39,18 @@ describe('The Medication Page', function() {
 
     });
 
+    describe('formatting time', function() {
+
+        it('should return the correctly formatted time', function() {
+            expect(medicationPage.getFormattedTime(0900)).toEqual("9:00 AM");
+            expect(medicationPage.getFormattedTime(1200)).toEqual("12:00 PM");
+            expect(medicationPage.getFormattedTime(1500)).toEqual("3:00 PM");
+            expect(medicationPage.getFormattedTime(1634)).toEqual("4:34 PM");
+            expect(medicationPage.getFormattedTime(0000)).toEqual("12:00 AM");
+            expect(medicationPage.getFormattedTime(1334)).toEqual("1:34 AM");
+        });
+
+    }
+
+
 });

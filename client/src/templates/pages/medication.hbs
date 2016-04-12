@@ -1,4 +1,7 @@
 <div class="medicationContainer">
-    {{name}} <br/> <img src="{{status}}"> <br/> {{time}}
-    <!-- {{name}} <br/> {{status}} <br/> {{time}} -->
+    <p id="header">{{name}} ({{quantity}})</p>
+
+    <img class="takenStatus" src="{{takenStatus}}" />
+
+    <p>{{formattedTime}}</p>
 </div>
