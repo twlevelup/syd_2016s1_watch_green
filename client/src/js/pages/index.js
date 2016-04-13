@@ -6,5 +6,5 @@ module.exports = {
   contacts  : require('./contactsPage'),
   about     : require('./aboutPage'),
   alert     : require('./alertPage'),
-  snooze    : require('./snoozePage')
+  snooze    : require('./snoozePage'),
 };

@@ -4,8 +4,6 @@ var PageView = require('../framework/page');
 
 var AlertsCollection = require('../collections/alerts'),
   AlertView = require('../views/alert');
-// InstructionsView = require('../views/instructions');
-
 
 var AlertsView = PageView.extend({
 
@@ -13,11 +11,10 @@ var AlertsView = PageView.extend({
 
   template          : require('../../templates/pages/alert.hbs'),
 
-
   buttonEvents      : {
     left    : 'goToHomePage',
     // right   : 'playSound',
-    top     : 'scrollUp',
+    top     : 'scrollUpTop',
     bottom  : 'scrollDownBot'
     // face    : 'snoozeAlert'
   },
@@ -32,28 +29,25 @@ var AlertsView = PageView.extend({
 
   seedAlerts: function() {
     this.alertsCollection.reset([
-      { medTitle: "Panadol", quantity: '2', timeTakeMeds: '8:00 AM', medInstructions : 'after eating lunch or dinner with a glass of water'
+      { name: "Panadol", quantity: '2', time: '0800', instructions : 'after eating lunch or dinner with a glass of water', takenStatus: "not_taken"
       }
-
     ]);
   },
 
-  snoozeAlert       : function() {
-    // this.$el.html('<p>SNOOZED</p>');
+  snoozeAlert: function() {
       window.App.navigate('snooze');
-      setTimeout(this.reRender, 5000);
+      setTimeout(this.goToAlertPage, 5000);
   },
 
-  acknowledgeAlert  : function() {
-    this.$el.html('<p>Thank you for taking your meds!</p>')
+  acknowledgeAlert: function() {
+    this.$el.html('<p>Thank you for taking your meds!</p>');
   },
 
-
-  scrollUp          : function() {
+  scrollUpTop: function() {
     $('#watch-face').animate({scrollTop: '-=400px'});
   },
 
-  scrollDownBot        : function() {
+  scrollDownBot: function() {
     $('#watch-face').animate({scrollTop: '+=400px'});
   },
 
@@ -76,12 +70,10 @@ var AlertsView = PageView.extend({
       $(alertsHTML).append(this.createAlertHTML(alert));
     }, this);
 
-    this.$el.find('ul').empty()
+    this.$el.find('ul').empty();
     this.$el.find('ul').html(alertsHTML);
     // this.playSound();
     return this;
-
-
   },
 
   createAlertHTML: function(alert) {
@@ -91,16 +83,9 @@ var AlertsView = PageView.extend({
       return view.render().el;
     },
 
-  //   reRender : function () {
-  //    this.$el.html(this.template());
-  //    return this;
-  //  },
-
-    reRender : function () {
+  goToAlertPage : function () {
       window.App.navigate('alert');
-    }
-
-
+  }
 });
 
 module.exports = new AlertsView();
