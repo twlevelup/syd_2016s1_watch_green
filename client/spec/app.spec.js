@@ -62,8 +62,18 @@ describe('The App', function() {
 
   });
 
-  xdescribe('clock', function() {
+  describe('clock', function() {
     it('should start the clock');
   });
 
+  /*
+  describe('check for alarm', function() {
+      it('should navigate to medication page', function() {
+          var time = '135900';
+          spyOn(app.router, 'navigate');
+          app.checkAlarmForMedicine(time);
+          expect(app.router.navigate).toHaveBeenCalledWith('medication', true);
+      });
+  });
+  */
 });

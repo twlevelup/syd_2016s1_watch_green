@@ -1,10 +1,12 @@
 'use strict';
 
+//var context = null;
+
 var taken = "../images/pill_taken.png";
 var not_taken = "../images/pill_not_taken.png";
 var AllMedication = [
-    { name: "Panadol", quantity: "1", time: "1042", instructions: "", takenStatus: taken },
-    { name: "Donepezil", quantity: "2", time: "1200", instructions: "", takenStatus: taken },
+    { name: "Panadol", quantity: "1", time: "1421", instructions: "", takenStatus: taken },
+    { name: "Donepezil", quantity: "2", time: "1219", instructions: "", takenStatus: taken },
     { name: "Formetorolol", quantity: "4", time: "1330", instructions: "", takenStatus: not_taken },
     { name: "Prozac", quantity: "25ml", time: "1500", instructions: "", takenStatus: taken },
     { name: "Ventolin", quantity: "3", time: "1800", instructions: "", takenStatus: not_taken }
@@ -69,7 +71,10 @@ App.prototype.setupEventHandlers = function () {
 App.prototype.start = function() {
 
   clock.start();
-  setInterval(this.checkForAlarm, 1000);
+  var obj = this;
+  setInterval(function() {
+      obj.checkForAlarm(obj);
+  }, 1000);
 
   this.setupEventHandlers();
 
@@ -80,17 +85,28 @@ App.prototype.start = function() {
 };
 
 // check for alarm
-App.prototype.checkForAlarm = function() {
+App.prototype.checkForAlarm = function(obj) {
     var timeArray = clock.getCurrentTime();
-    //console.log(timeArray);
-    //console.log(timeArray[0]+timeArray[1]);
-    for(var x=0; x<AllMedication.length; x++) {
-        var med = AllMedication[x];
-        if(med.time === timeArray[0]+timeArray[1]) {
-            // triggered alarm
+    var currentTime = timeArray[0] + '' + timeArray[1] + '' + timeArray[2];
+    //console.log("time : " + currentTime);
+
+    obj.checkAlarmForMedicine(currentTime);
+};
+
+App.prototype.checkAlarmForMedicine = function(currentTime) {
+    //console.log("current time : " + currentTime + "med Time" + med.time+'00');
+
+    for (var i = 0; i < AllMedication.length; i+=1) {
+        var med = AllMedication[i];
+
+        if(currentTime === med.time + '00') {
+            //console.log("trigger");
+            window.medicineForAlarm = med;
+            window.App.navigate('medication');
         }
     }
 };
+
 //
 
 var app = new App();

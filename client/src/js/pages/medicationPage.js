@@ -4,6 +4,7 @@
 
 'use strict';
 
+
 var PageView = require('../framework/page');
 
 var taken = "../../images/pill_taken.png";
@@ -60,6 +61,7 @@ var MedicationView = PageView.extend({
     },
 
     render: function() {
+        //console.log(window.currentMed);
         med.formattedTime = this.getFormattedTime(med.time);
         this.$el.html(this.template(med));
         return this;
