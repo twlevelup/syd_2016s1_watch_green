@@ -12,5 +12,6 @@ module.exports = {
   callSuccess: require('./callSuccessPage'),
   callFailed: require('./callFailedPage'),
   cancelCall: require('./cancelCallPage'),
-  basePage: require('./basePage')
+  basePage: require('./basePage'),
+  medSummary: require('./medSummaryPage')
 };
