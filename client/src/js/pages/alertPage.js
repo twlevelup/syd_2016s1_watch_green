@@ -1,11 +1,11 @@
 'use strict';
 
-var PageView = require('../framework/page');
+var BasePage = require('./basePage');
 
 var AlertsCollection = require('../collections/alerts'),
   AlertView = require('../views/alert');
 
-var AlertsView = PageView.extend({
+var AlertsView = BasePage.extend({
 
   id                : 'alerts',
 

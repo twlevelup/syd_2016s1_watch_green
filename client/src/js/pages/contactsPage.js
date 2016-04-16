@@ -1,11 +1,11 @@
 'use strict';
 
-var PageView = require('../framework/page');
+var BasePage = require('./basePage');
 
 var ContactsCollection = require('../collections/contacts'),
   ContactView = require('../views/contact');
 
-var ContactsView = PageView.extend({
+var ContactsView = BasePage.extend({
 
   id: 'contacts',
 
@@ -13,7 +13,7 @@ var ContactsView = PageView.extend({
 
   buttonEvents: {
     right: 'goToHomePage',
-    face: 'screenClickExample',
+    // face: 'screenClickExample',
     left: 'back'
   },
 
@@ -32,9 +32,9 @@ var ContactsView = PageView.extend({
     ]);
   },
 
-  screenClickExample: function() {
-    this.$el.html('<div>Oh noes!</div>');
-  },
+  // screenClickExample: function() {
+    // this.$el.html('<div>Oh noes!</div>');
+  // },
 
   goToHomePage: function() {
     window.App.navigate('');

@@ -4,7 +4,7 @@
 module.exports = {
   home: require('./homePage'),
   contacts: require('./contactsPage'),
-  about: require('./aboutPage'),
+  // about: require('./aboutPage'),
   medication: require('./medicationPage'),
   alert     : require('./alertPage'),
   snooze    : require('./snoozePage'),

@@ -4,9 +4,9 @@
 
 'use strict';
 
-var PageView = require('../framework/page');
+var BasePage = require('./basePage');
 
-var MedSummaryView = PageView.extend({
+var MedSummaryView = BasePage.extend({
 
     id: 'medSummary',
 
