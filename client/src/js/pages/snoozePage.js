@@ -8,35 +8,16 @@ var SnoozeView = PageView.extend({
 
   template: require('../../templates/pages/snooze.hbs'),
 
-  buttonEvents      : {
-    left    : 'goToHomePage',
-    top     : 'scrollUp',
-    bottom  : 'scrollDown',
-  },
 
-  // initialize: function() {
-  //   this.contactsCollection = new ContactsCollection();
-  //   this.seedContacts();
-  //   this.render();
-  // },
-
-
-  goToHomePage: function() {
-    window.App.navigate('');
-  },
-
-  scrollUp          : function() {
-    $('#watch-face').animate({scrollTop: '-=70px'});
-  },
-
-  scrollDown        : function() {
-    $('#watch-face').animate({scrollTop: '+=70px'});
+  initialize: function() {
+    this.render();
   },
 
   render: function() {
     this.$el.html(this.template());
     return this;
   }
+
 });
 
 module.exports = new SnoozeView();

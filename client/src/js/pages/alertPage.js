@@ -2,18 +2,20 @@
 
 var BasePage = require('./basePage');
 
-// var taken = "../../images/pill_taken.png";
-// var not_taken = "../../images/pill_not_taken.png";
-//
-// var AllMedication = [
-//     { name: "Panadol", quantity: "1", time: "0900", instructions: "Take with glass of water", takenStatus: taken},
-//     { name: "Donepezil", quantity: "2", time: "1200", instructions: "Have with food", takenStatus: taken},
-//     { name: "Formetorolol", quantity: "4", time: "1330", instructions: "Inject into arm", takenStatus: not_taken},
-//     { name: "Prozac", quantity: "25ml", time: "1500", instructions: "Dissolve into water", takenStatus: taken},
-//     { name: "Ventolin", quantity: "3", time: "1800", instructions: "Dissolve into water", takenStatus: not_taken}
-// ];
+var taken = "../../images/pill_taken.png";
+var not_taken = "../../images/pill_not_taken.png";
 
-var med = window.currentMed;
+var AllMedication = [
+    { name: "Panadol", quantity: "1", time: "0900", instructions: "Take with glass of water", takenStatus: taken},
+    { name: "Donepezil", quantity: "2", time: "1200", instructions: "Have with food", takenStatus: taken},
+    { name: "Formetorolol", quantity: "4", time: "1330", instructions: "Inject into arm", takenStatus: not_taken},
+    { name: "Prozac", quantity: "25ml", time: "1500", instructions: "Dissolve into water", takenStatus: taken},
+    { name: "Ventolin", quantity: "3", time: "1800", instructions: "Dissolve into water", takenStatus: not_taken}
+];
+
+// var med = window.currentMed;
+
+var med = AllMedication[0];
 
 var AlertsView = BasePage.extend({
 
