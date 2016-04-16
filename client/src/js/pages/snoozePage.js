@@ -2,17 +2,23 @@
 
 var PageView = require('../framework/page');
 
-var AboutView = PageView.extend({
+var SnoozeView = PageView.extend({
 
-  id: 'about',
+  id: 'snooze',
 
-  template: require('../../templates/pages/about.hbs'),
+  template: require('../../templates/pages/snooze.hbs'),
 
   buttonEvents      : {
     left    : 'goToHomePage',
     top     : 'scrollUp',
     bottom  : 'scrollDown',
   },
+
+  // initialize: function() {
+  //   this.contactsCollection = new ContactsCollection();
+  //   this.seedContacts();
+  //   this.render();
+  // },
 
 
   goToHomePage: function() {
@@ -31,7 +37,6 @@ var AboutView = PageView.extend({
     this.$el.html(this.template());
     return this;
   }
-
 });
 
-module.exports = new AboutView();
+module.exports = new SnoozeView();

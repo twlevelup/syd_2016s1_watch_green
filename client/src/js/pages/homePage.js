@@ -1,10 +1,12 @@
 'use strict';
 
-var PageView = require('../framework/page');
+var BasePage = require('./basePage');
 
-var HomeScreen = PageView.extend({
+var HomeScreen = BasePage.extend({
 
   id: 'home',
+
+  //HomeScreen.inherits(BasePage);
 
   template: require('../../templates/pages/home.hbs'),
 
@@ -23,9 +25,7 @@ var HomeScreen = PageView.extend({
     window.App.navigate('contacts');
   },
 
-  // scrollUp: function() {
-  //   $('#watch-face').animate({scrollTop: '-=70px'});
-  // },
+
   goToMedication: function() {
     window.App.navigate('medication');
   },
@@ -33,6 +33,7 @@ var HomeScreen = PageView.extend({
   scrollDown: function() {
     $('#watch-face').animate({scrollTop: '+=70px'});
   },
+
 
   render: function() {
     this.$el.html(this.template());
