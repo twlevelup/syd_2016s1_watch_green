@@ -79,20 +79,18 @@ App.prototype.start = function() {
 
 };
 
-//
-
+// check for alarm
 App.prototype.checkForAlarm = function() {
     var timeArray = clock.getCurrentTime();
-    console.log(timeArray);
-    console.log(timeArray[0]+timeArray[1]);
+    //console.log(timeArray);
+    //console.log(timeArray[0]+timeArray[1]);
     for(var x=0; x<AllMedication.length; x++) {
         var med = AllMedication[x];
         if(med.time === timeArray[0]+timeArray[1]) {
-            console.log("triggered");
+            // triggered alarm
         }
     }
-}
-
+};
 //
 
 var app = new App();
