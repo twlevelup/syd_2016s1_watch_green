@@ -34,14 +34,6 @@ describe('The Contacts Page', function() {
         expect(window.App.navigate).toHaveBeenCalledWith('');
       });
     });
-
-    describe('face', function() {
-      it('should display "Oh noes!" to the user', function() {
-        contactsPage.render();
-        eventHub.trigger('face');
-        expect(contactsPage.$el).toContainText('Oh noes!');
-      });
-    });
   });
 
   describe('rendering', function() {

@@ -26,10 +26,11 @@ describe('The Med summary Page', function() {
 
     describe('rendering', function() {
 
-        // it('should produce the correct HTML', function() {
-        //     medSummaryPage.render();
-        //     expect(medSummaryPage.$el).toContainText('Here are your meds for today.'); //image element
-        // });
+
+        it('should show the image of the capsule', function() {
+            medSummaryPage.render();
+            expect(medSummaryPage.$el).toContainElement('img.takenStatus'); //image element
+        });
 
         it('returns the view object', function() {
             expect(medSummaryPage.render()).toEqual(medSummaryPage);
