@@ -60,6 +60,7 @@ var MedicationView = BasePage.extend({
     },
 
     render: function() {
+        //console.log(window.currentMed);
         med.formattedTime = this.getFormattedTime(med.time);
         this.$el.html(this.template(med));
         return this;

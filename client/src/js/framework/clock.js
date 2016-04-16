@@ -4,6 +4,7 @@ var clock = {};
 
 var hours = -1;
 var mins = -1;
+var secs = -1;
 
 clock.months = ['January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December'];
 
@@ -35,6 +36,7 @@ clock.displayDateTime = function(date) {
   if (s < 10) {
     s = '0' + s;
   }
+  secs = s;
 
   var sDate = [clock.days[day], clock.months[month], d, year].join(' '),
     sTime =  [h, m, s].join(':'),
@@ -52,7 +54,7 @@ clock.start = function() {
 };
 
 clock.getCurrentTime = function() {
-    return [hours, mins]; // array of hr and min in 24hr format
+    return [hours, mins, secs]; // array of hr and min in 24hr format
 };
 
 module.exports = clock;
