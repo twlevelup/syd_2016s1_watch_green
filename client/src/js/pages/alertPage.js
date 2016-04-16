@@ -15,11 +15,14 @@ var AllMedication = [
 
 // var med = window.currentMed;
 
-var med = AllMedication[0];
+var med = window.currentMed;
+if(med === undefined) {
+    med = AllMedication[0];
+}
 
 var AlertsView = BasePage.extend({
 
-  id                : 'alerts',
+  id                : 'alert',
 
   template          : require('../../templates/pages/alert.hbs'),
 

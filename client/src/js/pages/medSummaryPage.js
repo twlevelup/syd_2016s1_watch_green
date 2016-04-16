@@ -6,16 +6,18 @@
 
 var BasePage = require('./basePage');
 
-
+var taken = "../images/pill_taken.png";
+var not_taken = "../images/pill_not_taken.png";
 var AllMedication = [
-    { name: "Panadol", quantity: "1", time: "0900"},
-    { name: "Donepezil", quantity: "2", time: "1200"},
-    { name: "Formetorolol", quantity: "4", time: "1330"},
-    { name: "Prozac", quantity: "25ml", time: "1500"},
-    { name: "Ventolin", quantity: "3", time: "1800"}
+    { name: "Panadol", quantity: "1", time: "1042", instructions: "Take with glass of water", takenStatus: taken },
+    { name: "Donepezil", quantity: "2", time: "1200", instructions: "Have with food", takenStatus: taken },
+    { name: "Formetorolol", quantity: "25ml", time: "1330", instructions: "Inject to arm", takenStatus: not_taken },
+    { name: "Prozac", quantity: "4", time: "1500", instructions: "Dissolve into water", takenStatus: taken },
+    { name: "Ventolin", quantity: "3", time: "1800", instructions: "Do not eat for 30 minutes after", takenStatus: not_taken }
 ];
 
-var med = AllMedication[0];
+var meds = (window.allMedication === undefined) ? AllMedication : window.allMedication;
+var med = meds[0];
 var index = -1;
 
 var MedSummaryView = BasePage.extend({
