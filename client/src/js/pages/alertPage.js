@@ -2,8 +2,20 @@
 
 var BasePage = require('./basePage');
 
-var AlertsCollection = require('../collections/alerts'),
-  AlertView = require('../views/alert');
+var taken = "../../images/pill_taken.png";
+var not_taken = "../../images/pill_not_taken.png";
+
+var AllMedication = [
+    { name: "Panadol", quantity: "1", time: "0900", instructions: "Take with glass of water", takenStatus: taken},
+    { name: "Donepezil", quantity: "2", time: "1200", instructions: "Have with food", takenStatus: taken},
+    { name: "Formetorolol", quantity: "4", time: "1330", instructions: "Inject into arm", takenStatus: not_taken},
+    { name: "Prozac", quantity: "25ml", time: "1500", instructions: "Dissolve into water", takenStatus: taken},
+    { name: "Ventolin", quantity: "3", time: "1800", instructions: "Dissolve into water", takenStatus: not_taken}
+];
+
+// var med = window.currentMed;
+
+var med = AllMedication[0];
 
 var AlertsView = BasePage.extend({
 
@@ -13,35 +25,24 @@ var AlertsView = BasePage.extend({
 
   buttonEvents      : {
     left    : 'goToHomePage',
-    // right   : 'playSound',
+    right   : 'snoozeAlert',
     top     : 'scrollUpTop',
     bottom  : 'scrollDownBot'
     // face    : 'snoozeAlert'
   },
 
   initialize: function() {
-    this.alertsCollection = new AlertsCollection();
-    this.seedAlerts();
     this.render();
-
-  },
-
-
-  seedAlerts: function() {
-    this.alertsCollection.reset([
-      { name: "Panadol", quantity: '2', time: '0800', instructions : 'after eating lunch or dinner with a glass of water', takenStatus: "not_taken"
-      }
-    ]);
   },
 
   snoozeAlert: function() {
       window.App.navigate('snooze');
-      setTimeout(this.goToAlertPage, 5000);
+      setTimeout(this.goToAlertPage, 3000);
   },
 
-  acknowledgeAlert: function() {
-    this.$el.html('<p>Thank you for taking your meds!</p>');
-  },
+  // acknowledgeAlert: function() {
+  //   this.$el.html('<p>Thank you for taking your meds!</p>');
+  // },
 
   scrollUpTop: function() {
     $('#watch-face').animate({scrollTop: '-=400px'});
@@ -52,40 +53,48 @@ var AlertsView = BasePage.extend({
   },
 
   goToHomePage: function() {
-  $('#watch-face').animate({scrollTop: '-400px'});
     window.App.navigate('');
   },
 
-  playSound: function() {
-    document.getElementById( 'timer-beep' ).play();
-  },
+  // playSound: function() {
+  //   document.getElementById( 'timer-beep' ).play();
+  // },
 
   render: function() {
-
-    this.$el.html(this.template());
-
-    var alertsHTML = document.createDocumentFragment();
-
-    this.alertsCollection.each(function(alert) {
-      $(alertsHTML).append(this.createAlertHTML(alert));
-    }, this);
-
-    this.$el.find('ul').empty();
-    this.$el.find('ul').html(alertsHTML);
-    // this.playSound();
-    return this;
+      med.formattedTime = this.getFormattedTime(med.time);
+      this.$el.html(this.template(med));
+      return this;
   },
 
-  createAlertHTML: function(alert) {
-      var view = new AlertView({
-        model: alert
-      });
-      return view.render().el;
-    },
+  getFormattedTime: function(time) {
+      var r = time % 100;
+      var quantity = time - r;
+      if(r < 10) {
+          r = "0" + r;
+      }
+
+      var q = quantity / 100;
+      if(quantity >= 1300) {
+          q = (quantity - 1200) / 100;
+      }
+
+      var postscript = " AM";
+      if(time >= 1200 && time <= 2359) {
+          postscript = " PM";
+      }
+
+      if(q === 0) {
+          q = 12;
+          postscript = " AM";
+      }
+
+      return q + ":" + r + postscript;
+  },
 
   goToAlertPage : function () {
       window.App.navigate('alert');
   }
+
 });
 
 module.exports = new AlertsView();
