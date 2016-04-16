@@ -2,7 +2,6 @@
 
 var PageView = require('../framework/page');
 
-
 var CallFailedView = PageView.extend({
 
   id: 'callFailed',

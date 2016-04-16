@@ -5,11 +5,11 @@
 var taken = "../images/pill_taken.png";
 var not_taken = "../images/pill_not_taken.png";
 var AllMedication = [
-    { name: "Panadol", quantity: "1", time: "1421", instructions: "", takenStatus: taken },
-    { name: "Donepezil", quantity: "2", time: "1219", instructions: "", takenStatus: taken },
-    { name: "Formetorolol", quantity: "4", time: "1330", instructions: "", takenStatus: not_taken },
-    { name: "Prozac", quantity: "25ml", time: "1500", instructions: "", takenStatus: taken },
-    { name: "Ventolin", quantity: "3", time: "1800", instructions: "", takenStatus: not_taken }
+    { name: "Panadol", quantity: "1", time: "1447", instructions: "Take with glass of water", takenStatus: taken },
+    { name: "Donepezil", quantity: "2", time: "1200", instructions: "Have with food", takenStatus: taken },
+    { name: "Formetorolol", quantity: "25ml", time: "1330", instructions: "Inject to arm", takenStatus: not_taken },
+    { name: "Prozac", quantity: "4", time: "1500", instructions: "Dissolve into water", takenStatus: taken },
+    { name: "Ventolin", quantity: "3", time: "1800", instructions: "Do not eat for 30 minutes after", takenStatus: not_taken }
 ];
 
 var Router = require('./framework/router'),
@@ -82,6 +82,10 @@ App.prototype.start = function() {
     Backbone.history.start();
   }
 
+  setTimeout(function() {
+      window.App.navigate('medSummary');
+  }, 5000);
+
 };
 
 // check for alarm
@@ -101,13 +105,12 @@ App.prototype.checkAlarmForMedicine = function(currentTime) {
 
         if(currentTime === med.time + '00') {
             //console.log("trigger");
-            window.medicineForAlarm = med;
-            window.App.navigate('medication');
+            window.currentMedIndex = i;
+            window.currentMed = med;
+            window.App.navigate('alert');
         }
     }
 };
-
-//
 
 var app = new App();
 
