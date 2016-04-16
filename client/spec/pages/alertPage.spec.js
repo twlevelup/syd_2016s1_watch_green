@@ -63,10 +63,10 @@ describe('The Alert Page', function() {
         });
       });
 
-      describe('face', function() {
+      describe('right', function() {
         it('should snooze the alarm', function() {
           spyOn(window.App, 'navigate');
-          eventHub.trigger('face');
+          eventHub.trigger('right');
           expect(window.App.navigate).toHaveBeenCalledWith('snooze');
         });
       });

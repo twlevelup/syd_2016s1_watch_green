@@ -1,8 +1,8 @@
 'use strict';
 
-var PageView = require('../framework/page');
+var BasePage = require('./basePage');
 
-var AboutView = PageView.extend({
+var AboutView = BasePage.extend({
 
   id: 'about',
 

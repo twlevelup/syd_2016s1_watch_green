@@ -1,21 +1,21 @@
 'use strict';
 
-var PageView = require('../framework/page');
+var BasePage = require('./basePage');
 
-var taken = "../../images/pill_taken.png";
-var not_taken = "../../images/pill_not_taken.png";
+// var taken = "../../images/pill_taken.png";
+// var not_taken = "../../images/pill_not_taken.png";
+//
+// var AllMedication = [
+//     { name: "Panadol", quantity: "1", time: "0900", instructions: "Take with glass of water", takenStatus: taken},
+//     { name: "Donepezil", quantity: "2", time: "1200", instructions: "Have with food", takenStatus: taken},
+//     { name: "Formetorolol", quantity: "4", time: "1330", instructions: "Inject into arm", takenStatus: not_taken},
+//     { name: "Prozac", quantity: "25ml", time: "1500", instructions: "Dissolve into water", takenStatus: taken},
+//     { name: "Ventolin", quantity: "3", time: "1800", instructions: "Dissolve into water", takenStatus: not_taken}
+// ];
 
-var AllMedication = [
-    { name: "Panadol", quantity: "1", time: "0900", instructions: "Take with glass of water", takenStatus: taken},
-    { name: "Donepezil", quantity: "2", time: "1200", instructions: "Have with food", takenStatus: taken},
-    { name: "Formetorolol", quantity: "4", time: "1330", instructions: "Inject into arm", takenStatus: not_taken},
-    { name: "Prozac", quantity: "25ml", time: "1500", instructions: "Dissolve into water", takenStatus: taken},
-    { name: "Ventolin", quantity: "3", time: "1800", instructions: "Dissolve into water", takenStatus: not_taken}
-];
+var med = window.currentMed;
 
-var med = AllMedication[0];
-
-var AlertsView = PageView.extend({
+var AlertsView = BasePage.extend({
 
   id                : 'alerts',
 
@@ -23,10 +23,10 @@ var AlertsView = PageView.extend({
 
   buttonEvents      : {
     left    : 'goToHomePage',
-    // right   : 'playSound',
+    right   : 'snoozeAlert',
     top     : 'scrollUpTop',
-    bottom  : 'scrollDownBot',
-    face    : 'snoozeAlert'
+    bottom  : 'scrollDownBot'
+    // face    : 'snoozeAlert'
   },
 
   initialize: function() {
@@ -35,7 +35,7 @@ var AlertsView = PageView.extend({
 
   snoozeAlert: function() {
       window.App.navigate('snooze');
-      setTimeout(this.goToAlertPage, 5000);
+      setTimeout(this.goToAlertPage, 3000);
   },
 
   // acknowledgeAlert: function() {
@@ -92,7 +92,7 @@ var AlertsView = PageView.extend({
   goToAlertPage : function () {
       window.App.navigate('alert');
   }
-  
+
 });
 
 module.exports = new AlertsView();

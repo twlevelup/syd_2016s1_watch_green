@@ -35,13 +35,13 @@ describe('The Contacts Page', function() {
       });
     });
 
-    describe('face', function() {
-      it('should display "Oh noes!" to the user', function() {
-        contactsPage.render();
-        eventHub.trigger('face');
-        expect(contactsPage.$el).toContainText('Oh noes!');
-      });
-    });
+    // describe('face', function() {
+    //   it('should display "Oh noes!" to the user', function() {
+    //     contactsPage.render();
+    //     eventHub.trigger('face');
+    //     expect(contactsPage.$el).toContainText('Oh noes!');
+    //   });
+    // });
   });
 
   describe('rendering', function() {

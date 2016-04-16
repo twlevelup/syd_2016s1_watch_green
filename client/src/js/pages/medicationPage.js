@@ -4,7 +4,7 @@
 
 'use strict';
 
-var PageView = require('../framework/page');
+var BasePage = require('./basePage');
 
 var taken = "../../images/pill_taken.png";
 var not_taken = "../../images/pill_not_taken.png";
@@ -21,7 +21,7 @@ var med = AllMedication[0];
 
 var index = 0;
 
-var MedicationView = PageView.extend({
+var MedicationView = BasePage.extend({
 
     id: 'medication',
 

@@ -4,7 +4,7 @@
 module.exports = {
   home: require('./homePage'),
   contacts: require('./contactsPage'),
-  about: require('./aboutPage'),
+  // about: require('./aboutPage'),
   medication: require('./medicationPage'),
   alert     : require('./alertPage'),
   snooze    : require('./snoozePage'),
@@ -12,5 +12,6 @@ module.exports = {
   callSuccess: require('./callSuccessPage'),
   callFailed: require('./callFailedPage'),
   cancelCall: require('./cancelCallPage'),
-  basePage: require('./basePage')
+  basePage: require('./basePage'),
+  medSummary: require('./medSummaryPage')
 };
