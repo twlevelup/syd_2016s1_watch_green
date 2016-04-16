@@ -37,9 +37,9 @@ describe('The Alert Page', function() {
         expect(alertPage.alertsCollection).toBeDefined();
       });
 
-      describe('loading data', function() {
-        it('should load the data from ...');
-      });
+      // describe('loading data', function() {
+      //   it('should load the data from ...');
+      // });
 
     });
 
@@ -48,22 +48,24 @@ describe('The Alert Page', function() {
     describe('The Button Events', function() {
 
       beforeEach(function() {
+        alertPage.render();
         alertPage.setButtonEvents();
       });
 
       describe('top', function() {
-        it('should scroll the watch face up', function() {
+        xit('should scroll the watch face up', function() {
           spyOn(alertPage, 'scrollUpTop');
-          alertPage.setButtonEvents();
+          // alertPage.render();
+          // alertPage.setButtonEvents();
           window.App.vent.trigger('top');
           expect(alertPage.scrollUpTop).toHaveBeenCalled();
         });
       });
 
       describe('bottom', function() {
-        it('should scroll the watch face down', function() {
+        xit('should scroll the watch face down', function() {
           spyOn(alertPage, 'scrollDownBot');
-          alertPage.setButtonEvents();
+          // alertPage.setButtonEvents();
           window.App.vent.trigger('bottom');
           expect(alertPage.scrollDownBot).toHaveBeenCalled();
         });

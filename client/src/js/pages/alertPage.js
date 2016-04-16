@@ -45,14 +45,16 @@ var AlertsView = PageView.extend({
 
   scrollUpTop: function() {
     $('#watch-face').animate({scrollTop: '-=400px'});
+    // console.log("top works");
   },
 
   scrollDownBot: function() {
     $('#watch-face').animate({scrollTop: '+=400px'});
+      // console.log("bot works");
   },
 
   goToHomePage: function() {
-  $('#watch-face').animate({scrollTop: '-400px'});
+  // $('#watch-face').animate({scrollTop: '-400px'});
     window.App.navigate('');
   },
 
@@ -73,7 +75,9 @@ var AlertsView = PageView.extend({
     this.$el.find('ul').empty();
     this.$el.find('ul').html(alertsHTML);
     // this.playSound();
+    // window.App.activePage.playSound();
     return this;
+    // window.App.activePage.playSound()
   },
 
   createAlertHTML: function(alert) {

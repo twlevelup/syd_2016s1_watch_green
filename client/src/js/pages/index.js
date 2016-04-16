@@ -7,4 +7,5 @@ module.exports = {
   about     : require('./aboutPage'),
   alert     : require('./alertPage'),
   snooze    : require('./snoozePage'),
+  medication: require('./medicationPage')
 };
