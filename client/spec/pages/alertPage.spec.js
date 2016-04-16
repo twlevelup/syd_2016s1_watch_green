@@ -9,7 +9,6 @@ window.App = App;
 
 describe('The Alert Page', function() {
 
-
     // Describe the right button
     // describe('right', function() {
     //   it('It should display a message thanking the user for taking their meds', function() {
@@ -24,25 +23,13 @@ describe('The Alert Page', function() {
     // });
 
     // describe('face', function() {
-      // it('It should display "SNOOZED" to the user', function() {
-      //     alertPage.render();
-      //     eventHub.trigger('face');
-      //     expect(alertPage.$el).toContainText('SNOOZED');
-      // });
+    //   it('It should display "SNOOZED" to the user', function() {
+    //       alertPage.render();
+    //       eventHub.trigger('face');
+    //       expect(alertPage.$el).toContainText('SNOOZE');
+    //       expect()
+    //   });
     // });
-
-    describe('medication data', function() {
-
-      it('should have a alerts collection', function() {
-        expect(alertPage.alertsCollection).toBeDefined();
-      });
-
-      // describe('loading data', function() {
-      //   it('should load the data from ...');
-      // });
-
-    });
-
 
     //Describe the button events
     describe('The Button Events', function() {
@@ -55,8 +42,6 @@ describe('The Alert Page', function() {
       describe('top', function() {
         xit('should scroll the watch face up', function() {
           spyOn(alertPage, 'scrollUpTop');
-          // alertPage.render();
-          // alertPage.setButtonEvents();
           window.App.vent.trigger('top');
           expect(alertPage.scrollUpTop).toHaveBeenCalled();
         });
@@ -65,7 +50,6 @@ describe('The Alert Page', function() {
       describe('bottom', function() {
         xit('should scroll the watch face down', function() {
           spyOn(alertPage, 'scrollDownBot');
-          // alertPage.setButtonEvents();
           window.App.vent.trigger('bottom');
           expect(alertPage.scrollDownBot).toHaveBeenCalled();
         });
@@ -78,21 +62,29 @@ describe('The Alert Page', function() {
           expect(window.App.navigate).toHaveBeenCalledWith('');
         });
       });
-    });
 
+      describe('face', function() {
+        it('should snooze the alarm', function() {
+          spyOn(window.App, 'navigate');
+          eventHub.trigger('face');
+          expect(window.App.navigate).toHaveBeenCalledWith('snooze');
+        });
+      });
+
+    });
 
     // Describe the rendering
     describe('rendering', function() {
 
       it('should produce the correct HTML', function() {
-        it('should display the correct meds', function() {
+        it('should display the time', function() {
           alertPage.render();
-          expect(alertPage.$el).toContainText('Panadol');
+          expect(alertPage.$el).toContainText('Time');
         });
 
-        it('should display the correct instructions', function() {
+        it('should display the instructions', function() {
           alertPage.render();
-          expect(alertPage.$el).toContainText('Panadol');
+          expect(alertPage.$el).toContainText('Instructions');
         });
       });
 
@@ -100,4 +92,18 @@ describe('The Alert Page', function() {
         expect(alertPage.render()).toEqual(alertPage);
       });
     });
+
+    describe('formatting time', function() {
+
+        it('should return the correctly formatted time', function() {
+            expect(alertPage.getFormattedTime(900)).toEqual("9:00 AM");
+            expect(alertPage.getFormattedTime(1200)).toEqual("12:00 PM");
+            expect(alertPage.getFormattedTime(1500)).toEqual("3:00 PM");
+            expect(alertPage.getFormattedTime(1634)).toEqual("4:34 PM");
+            expect(alertPage.getFormattedTime(0)).toEqual("12:00 AM");
+            expect(alertPage.getFormattedTime(1334)).toEqual("1:34 PM");
+        });
+
+    });
+
 });

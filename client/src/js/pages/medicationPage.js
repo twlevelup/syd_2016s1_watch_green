@@ -19,21 +19,6 @@ var AllMedication = [
 
 var med = AllMedication[0];
 
-/* Alternate method of defining medication*/
-/*
-function Medication(name, time){
-    this.name = name;
-    this.time = time;
-}
-
-var Med1 = new Medication("Acetyl-Cholinesterase inhibitor", "09:00");
-var Med2 = new Medication("Beta Amyloid Immunoglobulin", "12:00");
-var Med3 = new Medication("Tau Immunoglobulin", "15:00");
-var Med4 = new Medication("Acetyl-Cholinesterase inhibitor", "18:00");
-
-var AllMedication = [Med1, Med2, Med3, Med4];
-*/
-
 var index = 0;
 
 var MedicationView = PageView.extend({

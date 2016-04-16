@@ -2,10 +2,15 @@
 
 // TODO autogenerate this file
 module.exports = {
-  home      : require('./homePage'),
-  contacts  : require('./contactsPage'),
-  about     : require('./aboutPage'),
+  home: require('./homePage'),
+  contacts: require('./contactsPage'),
+  about: require('./aboutPage'),
+  medication: require('./medicationPage'),
   alert     : require('./alertPage'),
   snooze    : require('./snoozePage'),
-  medication: require('./medicationPage')
+  callWait: require('./callWaitPage'),
+  callSuccess: require('./callSuccessPage'),
+  callFailed: require('./callFailedPage'),
+  cancelCall: require('./cancelCallPage'),
+  basePage: require('./basePage')
 };
