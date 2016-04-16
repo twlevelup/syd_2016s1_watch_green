@@ -27,8 +27,8 @@ describe('The Med summary Page', function() {
     describe('rendering', function() {
 
         // it('should produce the correct HTML', function() {
-        //     medicationPage.render();
-        //     expect(medicationPage.$el).toContainElement('img.takenStatus'); //image element
+        //     medSummaryPage.render();
+        //     expect(medSummaryPage.$el).toContainText('Here are your meds for today.'); //image element
         // });
 
         it('returns the view object', function() {
