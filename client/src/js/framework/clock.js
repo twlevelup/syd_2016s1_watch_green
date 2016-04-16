@@ -24,7 +24,7 @@ clock.displayDateTime = function(date) {
   }
 
   if (m < 10) {
-    m = '0' + m;
+    m = '0'  + m;
   }
 
   if (s < 10) {
@@ -44,6 +44,12 @@ clock.displayDateTime = function(date) {
 
 clock.start = function() {
   setInterval(clock.displayDateTime, 1000);
+};
+
+clock.getCurrentTime = function() {
+    var time = $('.clock-time').html();
+    var _array = time.split(':');
+    return [_array[0], _array[1]]; // array of hr and min in 24hr format
 };
 
 module.exports = clock;
