@@ -13,10 +13,8 @@ var HomeScreen = BasePage.extend({
   buttonEvents: {
     left: 'goToAbout',
     right: 'goToContacts',
-    top: 'scrollUp',
-    bottom: 'scrollDown',
-    //face: 'goToCallWait',
-
+    top: 'goToMedication',
+    bottom: 'scrollDown'
   },
 
   goToAbout: function() {
@@ -27,13 +25,9 @@ var HomeScreen = BasePage.extend({
     window.App.navigate('contacts');
   },
 
-  // goToCallWait: function() {
-  //   //console.log('the function is arriving here');
-  //   window.App.navigate('callWait');
-  // },
 
-  scrollUp: function() {
-    $('#watch-face').animate({scrollTop: '-=70px'});
+  goToMedication: function() {
+    window.App.navigate('medication');
   },
 
   scrollDown: function() {

@@ -1,0 +1,55 @@
+.container-alert{
+  top: 0;
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  color: #000;
+  display: block;
+   ul li {
+    list-style-type: none;
+    text-align: left;
+   }
+}
+
+#alert-title{
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+  padding-bottom: 15px;
+  padding-left: 23px;
+
+}
+
+#alert-image{
+  width: 50%;
+  height: auto;
+  display: block;
+  padding-bottom: 25px;
+  padding-left: 15px;
+}
+
+#alert-time{
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  padding-bottom: 65px;
+  padding-left: 19px;
+}
+
+#pills-image{
+  width: 50%;
+  height: auto;
+  display: block;
+  padding-bottom: 25px;
+  margin: 0px 25px 13px 25px;
+}
+
+#alert-instructions{
+  // top: 10px;
+  font-style: italic;
+  font-size: 12px;
+  text-align: left;
+  display: block;
+  padding-bottom: 33px;
+  padding-right: 42px;
+}

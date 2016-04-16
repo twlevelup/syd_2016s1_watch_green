@@ -31,11 +31,15 @@ describe('The Home Page', function() {
     });
 
     describe('top', function() {
-      it('should scroll the watch face up', function() {
-        spyOn(homePage, 'scrollUp');
+      it('should take the user to the medication page', function() {
+        // spyOn(homePage, 'scrollUp');
+        // homePage.setButtonEvents();
+        // window.App.vent.trigger('top');
+        // expect(homePage.scrollUp).toHaveBeenCalled();
+        spyOn(window.App, 'navigate');
         homePage.setButtonEvents();
         window.App.vent.trigger('top');
-        expect(homePage.scrollUp).toHaveBeenCalled();
+        expect(window.App.navigate).toHaveBeenCalledWith('medication');
       });
     });
 
